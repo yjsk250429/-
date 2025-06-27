@@ -84,15 +84,20 @@ const MainBanner = () => {
 const topbar = () =>{
     const $topbtn = get('#wrap .top');
     const $header = get('#header');
+    const $contact = get('.contact');
+    const $allMenu = get('.all-menu');
+    const $popUp = get('#sitemap-wrap');
+    const $wrap = get('#wrap');
 
     let ty = 0;
     window.addEventListener('scroll', (e)=>{
         ty = window.scrollY;
         if (ty > 50){
             $header.classList.add('on');
+            $contact.classList.add('on');
         }else{
             $header.classList.remove('on');
-
+            $contact.classList.remove('on');
         }
 
         if (ty > 200){
@@ -104,9 +109,30 @@ const topbar = () =>{
             window.scrollTo({top:0, behavior:'smooth'});
         });
     });
+
+    $allMenu.addEventListener('click',(e)=>{
+        $popUp.classList.toggle('on');
+        $contact.classList.toggle('on');
+        $wrap.classList.toggle('on');
+    });
 };
+
+const con1_service = () =>{
+    const $prev = get('.main .con1 .inner .service-wrap .btns .prev');
+    const $next = get('.main .con1 .inner .service-wrap .btns .next');
+    const $box = get('.main .con1 .inner .service-wrap ul');
+    const $boxLi = getAll('.main .con1 .inner .service-wrap ul li');
+
+    const size = 465;
+    let current = 0;
+
+    $next.addEventListener('click', (e)=>{
+    });
+
+};
+
     //클릭 할때마다 size++ 되고, 그러다가 ul의 길이를 초과하게 되면 멈춤
-const con3_partners = () => {
+const con2_partners = () => {
     const $prev = get('.main .con2 .inner .btns .prev');
     const $next = get('.main .con2 .inner .btns .next');
     const $box = get('.main .con2 .inner ul');
@@ -141,7 +167,8 @@ const comInit = () => {
     topbar();
     MainBanner();
     MainMenu();
-    con3_partners();
+    con1_service();
+    con2_partners();
     con3_sel();
 };
 
